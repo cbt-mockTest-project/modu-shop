@@ -1,7 +1,11 @@
+("");
+
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import StyledComponentsRegistry from "./_providers/StyledComponentsRegistry";
+import BasicLayout from "./_components/BasicLayout";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 const pretendard = localFont({
   src: "../public/fonts/PretendardVariable.woff2",
@@ -21,9 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <StyledComponentsRegistry>
-        <body className={pretendard.className}>{children}</body>
-      </StyledComponentsRegistry>
+      <body className={pretendard.className}>
+        <StyledComponentsRegistry>
+          <AntdRegistry>
+            <BasicLayout>{children}</BasicLayout>
+          </AntdRegistry>
+        </StyledComponentsRegistry>
+      </body>
     </html>
   );
 }

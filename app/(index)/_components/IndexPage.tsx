@@ -3,14 +3,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const IndexPageBlock = styled.div`
-  border: 1px solid ${({ theme }) => theme["blue-1"]};
-`;
+const IndexPageBlock = styled.div``;
 
 interface IndexPageProps {}
 
 const IndexPage: React.FC<IndexPageProps> = () => {
-  return <IndexPageBlock>asd</IndexPageBlock>;
+  return <IndexPageBlock>asdasd</IndexPageBlock>;
 };
 
 export default IndexPage;
