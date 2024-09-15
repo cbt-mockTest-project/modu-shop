@@ -2,7 +2,12 @@
 
 import React, { useState } from "react";
 import { useServerInsertedHTML } from "next/navigation";
-import { ServerStyleSheet, StyleSheetManager } from "styled-components";
+import {
+  ServerStyleSheet,
+  StyleSheetManager,
+  ThemeProvider,
+} from "styled-components";
+import { theme as antdTheme } from "antd";
 
 export default function StyledComponentsRegistry({
   children,
@@ -10,7 +15,7 @@ export default function StyledComponentsRegistry({
   children: React.ReactNode;
 }) {
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
-
+  const theme = antdTheme.getDesignToken();
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
     styledComponentsStyleSheet.instance.clearTag();
@@ -21,7 +26,10 @@ export default function StyledComponentsRegistry({
 
   return (
     <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-      {children as React.ReactChild}
+      <ThemeProvider theme={theme}>
+        {children}
+        {children}
+      </ThemeProvider>
     </StyleSheetManager>
   );
 }
