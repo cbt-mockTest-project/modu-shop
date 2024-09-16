@@ -5,8 +5,9 @@ import styled from "styled-components";
 import BasicHeader from "./BasicHeader";
 
 const BasicLayoutBlock = styled.div`
+  overflow: hidden;
   .basic-layout-body {
-    padding: 50px 16px;
+    padding: 35px 16px;
     max-width: 1280px;
     margin: 0 auto;
   }

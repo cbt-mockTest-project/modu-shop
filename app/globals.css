@@ -19,6 +19,11 @@ a:not([class]){
   text-decoration-skip-ink: auto; 
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 img, picture, svg, video, canvas{
   max-width: 100%;
   height: auto; 

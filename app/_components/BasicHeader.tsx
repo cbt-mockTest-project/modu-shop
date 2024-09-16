@@ -1,4 +1,5 @@
 import { Menu } from "antd";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import styled from "styled-components";
 
@@ -33,23 +34,33 @@ const BasicHeaderBlock = styled.header`
 interface BasicHeaderProps {}
 
 const BasicHeader: React.FC<BasicHeaderProps> = () => {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const isHotdeal = pathname.includes("/hotdeal");
+  const router = useRouter();
   return (
     <BasicHeaderBlock>
       <div className="basic-header">
         <div className="basic-header-title">모두몰</div>
-        <div className="basic-header-sub-title">학습용품 전문 쇼핑몰</div>
+        <div className="basic-header-sub-title">
+          학습효율이 배가 되는 학습필수품 최저가 쇼핑몰
+        </div>
       </div>
       <Menu
         className="basic-header-menu"
         mode="horizontal"
+        selectedKeys={[isHome ? "/" : isHotdeal ? "/hotdeal" : "/"]}
+        onClick={(e) => {
+          router.push(e.key);
+        }}
         items={[
           {
             label: "전체",
-            key: "all",
+            key: "/",
           },
           {
-            label: "베스트",
-            key: "best",
+            label: "핫딜",
+            key: "/hotdeal",
           },
         ]}
       />
