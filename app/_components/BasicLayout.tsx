@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import BasicHeader from "./BasicHeader";
 import BasicFooter from "./BasicFooter";
+import TagManager from "react-gtm-module";
 
 const BasicLayoutBlock = styled.div`
   overflow: hidden;
@@ -20,6 +21,11 @@ interface BasicLayoutProps {
 }
 
 const BasicLayout: React.FC<BasicLayoutProps> = ({ children }) => {
+  useEffect(() => {
+    TagManager.initialize({
+      gtmId: "GTM-TB5Q6869",
+    });
+  }, []);
   return (
     <BasicLayoutBlock>
       <BasicHeader />

@@ -128,6 +128,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       href={product.productUrl}
       target="_blank"
       rel="noopener noreferrer"
+      data-gtm-label={product.productName + " 클릭 이벤트 발생"}
     >
       <div className="image-wrapper">
         <Image src={product.productImage} alt={product.productName} fill />
