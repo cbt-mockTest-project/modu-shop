@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import StyledComponentsRegistry from "./_providers/StyledComponentsRegistry";
 import BasicLayout from "./_components/BasicLayout";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { Suspense } from "react";
 
 const pretendard = localFont({
   src: "../public/fonts/PretendardVariable.woff2",
@@ -26,7 +27,9 @@ export default function RootLayout({
       <body className={pretendard.className}>
         <AntdRegistry>
           <StyledComponentsRegistry>
-            <BasicLayout>{children}</BasicLayout>
+            <Suspense fallback={<></>}>
+              <BasicLayout>{children}</BasicLayout>
+            </Suspense>
           </StyledComponentsRegistry>
         </AntdRegistry>
       </body>
