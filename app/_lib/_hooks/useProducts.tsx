@@ -17,9 +17,11 @@ const useProducts = (keyword: string) => {
 
   const { data, isValidating } = useSWR<GetCoupangProductsResponse>(
     FETCH_COUPANG_PRODUCTS_API_KEY(keyword),
-    fetcher
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
   );
-  console.log(FETCH_COUPANG_PRODUCTS_API_KEY(keyword));
   return { data, isValidating };
 };
 

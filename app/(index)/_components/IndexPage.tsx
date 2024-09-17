@@ -1,6 +1,7 @@
 "use client";
 
 import ProductListTemplate from "@/_components/product/ProductListTemplate";
+import Search from "@/_components/search/Search";
 import useProducts from "@/_lib/_hooks/useProducts";
 import React from "react";
 import styled from "styled-components";
@@ -20,6 +21,7 @@ const IndexPage: React.FC<IndexPageProps> = () => {
   const { data: products04 } = useProducts("공부타이머");
   return (
     <IndexPageBlock>
+      <Search />
       {products01 && (
         <ProductListTemplate
           title="독서대"

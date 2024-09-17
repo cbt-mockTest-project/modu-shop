@@ -1,4 +1,5 @@
 import { Menu } from "antd";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import styled from "styled-components";
@@ -40,12 +41,14 @@ const BasicHeader: React.FC<BasicHeaderProps> = () => {
   const router = useRouter();
   return (
     <BasicHeaderBlock>
-      <div className="basic-header">
-        <div className="basic-header-title">모두몰</div>
-        <div className="basic-header-sub-title">
-          학습효율이 배가 되는 학습필수품 최저가 쇼핑몰
+      <Link href="/">
+        <div className="basic-header">
+          <div className="basic-header-title">모두몰</div>
+          <div className="basic-header-sub-title">
+            학습효율이 배가 되는 학습필수품 최저가 쇼핑몰
+          </div>
         </div>
-      </div>
+      </Link>
       <Menu
         className="basic-header-menu"
         mode="horizontal"
@@ -55,7 +58,7 @@ const BasicHeader: React.FC<BasicHeaderProps> = () => {
         }}
         items={[
           {
-            label: "전체",
+            label: "인기상품",
             key: "/",
           },
           {

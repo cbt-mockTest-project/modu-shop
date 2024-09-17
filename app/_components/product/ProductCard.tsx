@@ -14,18 +14,6 @@ const ProductCardBlock = styled(Link)`
   flex-shrink: 0;
   user-select: none;
   position: relative;
-  width: calc(100% / 4 - 16px);
-  @media (max-width: ${responsive.medium}) {
-    width: calc(100% / 3 - 16px);
-  }
-
-  @media (max-width: ${responsive.small}) {
-    width: calc(50% - 32px);
-  }
-
-  @media (max-width: ${responsive.xsmall}) {
-    width: calc(100% - 64px);
-  }
 
   .image-wrapper {
     user-select: none;
@@ -46,6 +34,9 @@ const ProductCardBlock = styled(Link)`
       display: flex;
       align-items: center;
       gap: 12px;
+      @media (max-width: ${responsive.small}) {
+        font-size: 14px;
+      }
 
       .price {
         font-weight: 700;
@@ -54,7 +45,6 @@ const ProductCardBlock = styled(Link)`
 
       .rocket-icon {
         position: relative;
-        bottom: 2px;
       }
     }
 
@@ -124,11 +114,17 @@ const ProductCardBlock = styled(Link)`
 interface ProductCardProps {
   product: Product;
   rank: number;
+  className?: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, rank }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  rank,
+  className = "",
+}) => {
   return (
     <ProductCardBlock
+      className={className}
       href={product.productUrl}
       target="_blank"
       rel="noopener noreferrer"
@@ -141,7 +137,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, rank }) => {
           <div className="price-discount">
             <span className="discount-label">즉시할인가</span>
             <div className="discount-divider" />
-            <span className="discount-rate">{product.discountRate * 100}%</span>
+            <span className="discount-rate">
+              {(product.discountRate * 100).toFixed(0)}%
+            </span>
             <span className="discount-price">
               {(
                 Math.floor(

@@ -18,3 +18,21 @@ export const fetchCoupangProducts = (keyword: string) =>
   fetchWrapper<GetCoupangProductsResponse>(
     FETCH_COUPANG_PRODUCTS_API_KEY(keyword)
   );
+
+export const SEARCH_COUPANG_PRODUCTS_API_KEY = (
+  keyword: string,
+  isMobile: boolean
+) =>
+  `/modu-shop/coupang/search/list?keyword=${keyword}&type=${
+    isMobile ? "m" : "pc"
+  }`;
+
+export const searchCoupangProducts = async (
+  keyword: string,
+  isMobile: boolean
+) => {
+  const { data } = await apiClient.get<GetCoupangProductsResponse>(
+    SEARCH_COUPANG_PRODUCTS_API_KEY(keyword, isMobile)
+  );
+  return data;
+};

@@ -29,7 +29,6 @@ export default async function Home() {
     [FETCH_COUPANG_PRODUCTS_API_KEY("에너지드링크")]: products03,
     [FETCH_COUPANG_PRODUCTS_API_KEY("공부타이머")]: products04,
   };
-  console.log("server", FETCH_COUPANG_PRODUCTS_API_KEY("독서대"));
   return (
     <SWRProvider
       value={{

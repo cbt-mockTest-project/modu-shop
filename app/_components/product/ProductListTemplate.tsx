@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ProductCard from "./ProductCard";
 import { Product } from "@/_lib/models/product";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { Button } from "antd";
 import { responsive } from "@/_lib/_styles/responsive";
 
 const ProductLisTemplateBlock = styled.div`
@@ -44,6 +43,21 @@ const ProductLisTemplateBlock = styled.div`
     .product-list {
       display: flex;
       gap: 16px;
+
+      .product-card {
+        width: calc(100% / 4 - 16px);
+        @media (max-width: ${responsive.medium}) {
+          width: calc(100% / 3 - 16px);
+        }
+
+        @media (max-width: ${responsive.small}) {
+          width: calc(50% - 32px);
+        }
+
+        @media (max-width: ${responsive.xsmall}) {
+          width: calc(100% - 64px);
+        }
+      }
     }
   }
 
@@ -129,17 +143,12 @@ const ProductLisTemplate: React.FC<ProductLisTemplateProps> = ({
       )}
       <div className="title-area">
         <div className="title">{title}</div>
-        <Button type="text">
-          <div className="more-button">
-            <span>더보기</span>
-            <RightOutlined />
-          </div>
-        </Button>
       </div>
       <div className="product-list-wrapper" ref={listRef}>
         <div className="product-list">
           {products.map((product, index) => (
             <ProductCard
+              className="product-card"
               key={product.productId}
               product={product}
               rank={index + 1}

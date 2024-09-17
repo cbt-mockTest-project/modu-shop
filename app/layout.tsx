@@ -1,5 +1,3 @@
-("");
-
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
@@ -26,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="kr">
       <body className={pretendard.className}>
-        <StyledComponentsRegistry>
-          <AntdRegistry>
+        <AntdRegistry>
+          <StyledComponentsRegistry>
             <BasicLayout>{children}</BasicLayout>
-          </AntdRegistry>
-        </StyledComponentsRegistry>
+          </StyledComponentsRegistry>
+        </AntdRegistry>
       </body>
     </html>
   );

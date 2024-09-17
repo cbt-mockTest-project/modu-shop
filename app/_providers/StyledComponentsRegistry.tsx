@@ -16,13 +16,17 @@ export default function StyledComponentsRegistry({
 }) {
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
   const theme = antdTheme.getDesignToken();
+
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
     styledComponentsStyleSheet.instance.clearTag();
     return <>{styles}</>;
   });
 
-  if (typeof window !== "undefined") return <>{children}</>;
+  // 클라이언트 사이드에서도 ThemeProvider를 사용합니다.
+  if (typeof window !== "undefined") {
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  }
 
   return (
     <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
