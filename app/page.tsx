@@ -19,15 +19,28 @@ const fetchProducts = async (
 };
 
 export default async function Home() {
-  const products01 = await fetchProducts("독서대");
-  const products02 = await fetchProducts("전자노트");
-  const products03 = await fetchProducts("에너지드링크");
-  const products04 = await fetchProducts("공부타이머");
-  const products05 = await fetchProducts("노트북 거치대");
-  const products06 = await fetchProducts("포스트잇");
-  const products07 = await fetchProducts("스터디 플래너");
-  const products08 = await fetchProducts("지워지는볼펜");
-  const products09 = await fetchProducts("공책");
+  const [
+    products01,
+    products02,
+    products03,
+    products04,
+    products05,
+    products06,
+    products07,
+    products08,
+    products09,
+  ] = await Promise.all([
+    fetchProducts("독서대"),
+    fetchProducts("전자노트"),
+    fetchProducts("에너지드링크"),
+    fetchProducts("공부타이머"),
+    fetchProducts("노트북 거치대"),
+    fetchProducts("포스트잇"),
+    fetchProducts("스터디 플래너"),
+    fetchProducts("지워지는볼펜"),
+    fetchProducts("공책"),
+  ]);
+
   const fallback = {
     [FETCH_COUPANG_PRODUCTS_API_KEY("독서대")]: products01,
     [FETCH_COUPANG_PRODUCTS_API_KEY("전자노트")]: products02,
