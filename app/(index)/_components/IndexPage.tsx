@@ -23,6 +23,7 @@ const IndexPage: React.FC<IndexPageProps> = () => {
   const { data: products06 } = useProducts("포스트잇");
   const { data: products07 } = useProducts("스터디 플래너");
   const { data: products08 } = useProducts("지워지는볼펜");
+  const { data: products09 } = useProducts("공책");
   return (
     <IndexPageBlock>
       <Search />
@@ -66,6 +67,13 @@ const IndexPage: React.FC<IndexPageProps> = () => {
           title="에너지드링크"
           key="에너지드링크"
           products={products03.products}
+        />
+      )}
+      {products09 && (
+        <ProductListTemplate
+          title="공책"
+          key="공책"
+          products={products09.products}
         />
       )}
       {products05 && (
