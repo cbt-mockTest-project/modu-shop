@@ -1,6 +1,6 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Input, message } from "antd";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import styled from "styled-components";
 
@@ -9,7 +9,9 @@ const SearchBlock = styled.div``;
 interface SearchProps {}
 
 const Search: React.FC<SearchProps> = () => {
-  const [keyword, setKeyword] = useState("");
+  const searchParams = useSearchParams();
+  const defaultKeyword = searchParams.get("q") || "";
+  const [keyword, setKeyword] = useState(defaultKeyword);
   const router = useRouter();
   const handleSearch = (keyword: string) => {
     if (keyword.trim()) {

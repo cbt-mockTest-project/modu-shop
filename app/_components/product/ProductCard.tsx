@@ -132,7 +132,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       data-gtm-label={product.productName + " 클릭 이벤트 발생"}
     >
       <div className="image-wrapper">
-        <Image src={product.productImage} alt={product.productName} fill />
+        <img src={product.productImage} alt={product.productName} />
       </div>
       <div className="product-info">
         {product.discountRate > 0 && (
