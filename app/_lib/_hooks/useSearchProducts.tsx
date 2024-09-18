@@ -4,7 +4,6 @@ import {
   SEARCH_COUPANG_PRODUCTS_API_KEY,
   searchCoupangProducts,
 } from "../apis/coupang";
-import { isMobile } from "react-device-detect";
 import { useSearchParams } from "next/navigation";
 
 const useSearchProducts = () => {
@@ -13,7 +12,7 @@ const useSearchProducts = () => {
   const fetcher = async () => {
     try {
       if (!keyword.trim()) throw new Error("검색어를 입력해주세요.");
-      const products = await searchCoupangProducts(keyword, isMobile);
+      const products = await searchCoupangProducts(keyword);
       return products;
     } catch (error) {
       return { products: [] };
@@ -21,7 +20,7 @@ const useSearchProducts = () => {
   };
 
   const { data, isValidating } = useSWR<GetCoupangProductsResponse>(
-    SEARCH_COUPANG_PRODUCTS_API_KEY(keyword, isMobile),
+    SEARCH_COUPANG_PRODUCTS_API_KEY(keyword),
     fetcher,
     {
       revalidateOnFocus: false,

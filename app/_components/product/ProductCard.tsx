@@ -4,6 +4,7 @@ import { Rate } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { isMobile } from "react-device-detect";
 import styled from "styled-components";
 
 const ProductCardBlock = styled(Link)`
@@ -125,7 +126,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <ProductCardBlock
       className={className}
-      href={product.productUrl}
+      href={product.productUrl + `&subid=${isMobile ? "android" : "webpage00"}`}
       target="_blank"
       rel="noopener noreferrer"
       data-gtm-label={product.productName + " 클릭 이벤트 발생"}
