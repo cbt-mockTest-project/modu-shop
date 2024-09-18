@@ -1,3 +1,4 @@
+import { responsive } from "@/_lib/_styles/responsive";
 import { Menu } from "antd";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -17,12 +18,20 @@ const BasicHeaderBlock = styled.header`
       font-size: 32px;
       font-weight: 700;
       line-height: 32px;
+      @media (max-width: ${responsive.small}) {
+        font-size: 24px;
+        line-height: 24px;
+      }
     }
     .basic-header-sub-title {
       font-size: 20px;
       font-weight: 400;
       line-height: 20px;
-      color: ${({ theme }) => theme.colorTextSecondary};
+      color: ${({ theme }) => theme.colorTextTertiary};
+      @media (max-width: ${responsive.small}) {
+        font-size: 16px;
+        line-height: 16px;
+      }
     }
   }
 
@@ -45,7 +54,7 @@ const BasicHeader: React.FC<BasicHeaderProps> = () => {
         <div className="basic-header">
           <div className="basic-header-title">모두몰</div>
           <div className="basic-header-sub-title">
-            학습효율이 배가 되는 학습필수품 최저가 쇼핑몰
+            학습필수품을 최저가로 만나보세요!
           </div>
         </div>
       </Link>

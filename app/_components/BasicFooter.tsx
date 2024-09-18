@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const BasicFooterBlock = styled.div`
+  padding: 0 20px;
   width: 100vw;
   height: 100px;
-  background-color: ${({ theme }) => theme.colorSplit};
+  background-color: ${({ theme }) => theme.colorBgLayout};
   display: flex;
   align-items: center;
   justify-content: center;
