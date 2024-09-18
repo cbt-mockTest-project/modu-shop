@@ -52,7 +52,7 @@ const BasicHeader: React.FC<BasicHeaderProps> = () => {
     <BasicHeaderBlock>
       <Link href="/">
         <div className="basic-header">
-          <div className="basic-header-title">모두몰</div>
+          <div className="basic-header-title">모두상점</div>
           <div className="basic-header-sub-title">
             학습필수품을 최저가로 만나보세요!
           </div>

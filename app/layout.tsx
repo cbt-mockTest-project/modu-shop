@@ -13,7 +13,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "모두몰 - 학습필수품 최저가 쇼핑몰",
+  title: "모두상점 - 학습필수품 최저가 쇼핑몰",
   description: "학습효율이 배가 되는 학습필수품 최저가 쇼핑몰",
 };
 
